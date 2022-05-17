@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         </div>
         <div
           className="mx-auto mt-5 w-1/2 rounded-xl bg-blue-500 p-3 text-center text-white
-        hover:bg-teal-500 hover:text-black focus:text-red-400 active:bg-yellow-500"
+        transition-all hover:bg-teal-500 hover:text-black focus:text-red-400 active:bg-yellow-500"
         >
           Checkout
         </div>
@@ -60,9 +60,9 @@ const Home: NextPage = () => {
           <span className="text-xs text-gray-500">Chair</span>
           <div className="mt-3 mb-5 flex justify-between">
             <div className="space-x-2">
-              <button className="h-5 w-5 rounded-full bg-yellow-500" />
-              <button className="h-5 w-5 rounded-full bg-indigo-500" />
-              <button className="h-5 w-5 rounded-full bg-teal-500" />
+              <button className="h-5 w-5 rounded-full bg-yellow-500 ring-yellow-500 ring-offset-2 transition focus:ring-2" />
+              <button className="h-5 w-5 rounded-full bg-indigo-500 ring-indigo-500 ring-offset-2 transition focus:ring-2" />
+              <button className="h-5 w-5 rounded-full bg-teal-500 ring-teal-500 ring-offset-2 transition focus:ring-2" />
             </div>
             <div className="flex items-center space-x-5">
               <button className="flex aspect-square w-10 items-center justify-center rounded-lg bg-blue-200 text-xl text-gray-500">
