@@ -2,17 +2,24 @@ import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <form className="flex flex-col space-y-2 bg-blue-500 p-5 focus-within:bg-blue-100">
+    <form className="flex flex-col space-y-2">
       <input
         type="text"
         required
         placeholder="Username"
-        // className="border-yellow-500 required:border-2"
-        //className="invalid:bg-red-500" // required일 때 채워지지 않으면 invalid 상태가 됨
-        className="placeholder-shown:bg-teal-50"
+        className="peer rounded-md border border-gray-400 p-1"
       />
-      <input type="password" required placeholder="Password" />
-      <input type="submit" value="Login" className="bg-white" />
+      <span className="hidden peer-invalid:block peer-invalid:text-red-500">
+        This input is invalid
+      </span>
+      <span className="hidden peer-valid:block peer-valid:text-teal-500">
+        Awesome Username !
+      </span>
+      <input
+        type="submit"
+        value="Login"
+        className="rounded-lg border-2 border-gray-400 bg-white"
+      />
     </form>
   );
 };
