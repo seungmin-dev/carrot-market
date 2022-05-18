@@ -2,13 +2,8 @@ import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <div className="dark grid min-h-screen place-content-center gap-10 space-y-5 bg-slate-400 py-20 px-10 lg:grid-cols-2 xl:grid-cols-3">
-      {/* 위의 div에 dark라는 클래스 명을 추가하면 하위 세 요소에 dark:로 추가한 속성들이 활성화됨 */}
-      {/* 네비게이션 바에 버튼을 두고 클릭하면 위의 div에 dark라는 클래스를 추가하는 방식 */}
-      {/* 보통은 body 등 가장 상위 요소에 dark를 추가함 */}
+    <div className="grid min-h-screen place-content-center gap-10 space-y-5 bg-slate-400 py-20 px-10 lg:grid-cols-2 xl:grid-cols-3">
       <div className="flex flex-col justify-between rounded-3xl bg-white p-6 shadow-xl dark:bg-black dark:text-white sm:bg-red-200 md:bg-teal-200 lg:bg-indigo-200 xl:bg-purple-200 2xl:bg-yellow-200">
-        {/* sm, md, lg, xl, 2xl => media query */}
-        {/* md:hover 이런 식으로 같이 쓸 수도 있음 */}
         <span className="text-3xl font-semibold">Select Item</span>
         <ul>
           {[1, 2, 3, 4, 5].map((i) => (
@@ -84,7 +79,10 @@ const Home: NextPage = () => {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-medium">$450</span>
-            <button className="rounded-lg bg-blue-500 py-2 px-8 text-center text-xs text-white">
+            <button className="rounded-lg bg-[#846183] py-2 px-8 text-center text-xs text-white">
+              {/* JIT(Just-In-Time) Compiler 덕분에 tailwindcss에서 제공하지 않는 크기(픽셀 값 등), 색깔 등을 내 임의로 설정할 수 있음 */}
+              {/* 코드를 감시하면서 사용자가 임의로 추가한 클래스들을 새로 생성해서 컴파일해줌 */}
+              {/* bg-[url('/*.png')] 처럼 이미지도 가능 */}
               Add to cart
             </button>
           </div>
