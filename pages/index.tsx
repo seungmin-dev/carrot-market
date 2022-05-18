@@ -2,8 +2,11 @@ import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <div className="grid min-h-screen place-content-center gap-10 space-y-5 bg-slate-400 py-20 px-10 lg:grid-cols-2 xl:grid-cols-3">
-      <div className="flex flex-col justify-between rounded-3xl bg-white p-6 shadow-xl sm:bg-red-200 md:bg-teal-200 lg:bg-indigo-200 xl:bg-purple-200 2xl:bg-yellow-200">
+    <div className="dark grid min-h-screen place-content-center gap-10 space-y-5 bg-slate-400 py-20 px-10 lg:grid-cols-2 xl:grid-cols-3">
+      {/* 위의 div에 dark라는 클래스 명을 추가하면 하위 세 요소에 dark:로 추가한 속성들이 활성화됨 */}
+      {/* 네비게이션 바에 버튼을 두고 클릭하면 위의 div에 dark라는 클래스를 추가하는 방식 */}
+      {/* 보통은 body 등 가장 상위 요소에 dark를 추가함 */}
+      <div className="flex flex-col justify-between rounded-3xl bg-white p-6 shadow-xl dark:bg-black dark:text-white sm:bg-red-200 md:bg-teal-200 lg:bg-indigo-200 xl:bg-purple-200 2xl:bg-yellow-200">
         {/* sm, md, lg, xl, 2xl => media query */}
         {/* md:hover 이런 식으로 같이 쓸 수도 있음 */}
         <span className="text-3xl font-semibold">Select Item</span>
