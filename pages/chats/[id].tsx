@@ -1,26 +1,19 @@
 import type { NextPage } from "next";
+import ChatMe from "../../components/chatMe";
+import ChatYou from "../../components/chatYou";
 
 const ChatDetail: NextPage = () => {
   return (
     <div className="space-y-4 py-10 px-4 last:mb-6">
-      <div className="flex items-start space-x-2">
-        <div className="h-8 w-8 rounded-full bg-slate-400" />
-        <div className="w-1/2 rounded-md border border-gray-400 p-2 text-sm text-gray-700">
-          <p>Hi how much are you selling them for?</p>
-        </div>
-      </div>
-      <div className="flex flex-row-reverse items-start space-x-2 space-x-reverse">
-        <div className="h-8 w-8 rounded-full bg-slate-400" />
-        <div className="w-1/2 rounded-md border border-gray-400 p-2 text-sm text-gray-700">
-          <p>I want ￦20,000</p>
-        </div>
-      </div>
-      <div className="flex items-start space-x-2">
-        <div className="h-8 w-8 rounded-full bg-slate-400" />
-        <div className="w-1/2 rounded-md border border-gray-400 p-2 text-sm text-gray-700">
-          <p>미쳤어</p>
-        </div>
-      </div>
+      <ChatYou>
+        <p>Hi how much are you selling them for?</p>
+      </ChatYou>
+      <ChatMe>
+        <p>I want ￦20,000</p>
+      </ChatMe>
+      <ChatYou>
+        <p>미쳤어</p>
+      </ChatYou>
       <div className="fixed inset-x-0 bottom-2 mx-auto w-full max-w-md">
         <div className="relative flex items-center">
           <input
