@@ -1,31 +1,39 @@
 import type { NextPage } from "next";
-import Button from "../components/button";
+import FloatingButton from "../components/floating-button";
+import Item from "../components/item";
 import Layout from "../components/layout";
-import ListItem from "../components/listItem";
 
 const Home: NextPage = () => {
   return (
-    <Layout hasTabBar title="홈">
-      <div className="flex flex-col space-y-5">
+    <Layout title="홈" hasTabBar>
+      <div className="flex flex-col space-y-5 divide-y">
         {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => (
-          <ListItem key={i} />
+          <Item
+            id={i}
+            key={i}
+            title="iPhone 14"
+            price={99}
+            comments={1}
+            hearts={1}
+          />
         ))}
-        <Button>
+        <FloatingButton href="/items/upload">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth={2}
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M12 4v16m8-8H4"
+              strokeWidth="2"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
             />
           </svg>
-        </Button>
+        </FloatingButton>
       </div>
     </Layout>
   );
