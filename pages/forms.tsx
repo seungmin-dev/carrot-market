@@ -5,12 +5,18 @@ interface LoginForm {
   username: string;
   password: string;
   email: string;
+  errors?: string;
 }
 export default function Form() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setError,
+    setValue,
+    reset,
+    resetField,
   } = useForm<LoginForm>({
     mode: "onBlur",
   });
@@ -52,6 +58,7 @@ export default function Form() {
         placeholder="Password"
       />
       <input type="submit" value="Create Account" />
+      {errors.errors?.message}
     </form>
   );
 }
