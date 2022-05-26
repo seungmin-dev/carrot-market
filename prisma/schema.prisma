@@ -11,7 +11,6 @@ datasource db {
   provider             = "mysql"
   url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
-  // prisma가 확인절차 도와줌
 }
 
 model User {
@@ -28,7 +27,7 @@ model User {
 model Token {
   id        Int      @id @default(autoincrement())
   payload   String   @unique
-  user      User     @relation(fields: [userId], references: [id]) // DB에 직접적으로 저장되지 않는 필드
+  user      User     @relation(fields: [userId], references: [id])
   userId    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
