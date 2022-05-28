@@ -2,7 +2,14 @@ import { withIronSessionApiRoute } from "iron-session/next";
 import { NextApiRequest, NextApiResponse } from "next";
 import withHandler, { ResponseType } from "@libs/server/withHandler";
 import client from "@libs/server/client";
-import { PayloadContext } from "twilio/lib/rest/api/v2010/account/recording/addOnResult/payload";
+
+declare module "iron-session" {
+  interface IronSessionData {
+    user?: {
+      id: number;
+    };
+  }
+}
 
 async function handler(
   req: NextApiRequest,
@@ -17,9 +24,9 @@ async function handler(
     },
     include: { user: true },
   });
-  if (!exists) res.status(400).end();
+  if (!exists) return res.status(400).end();
   req.session.user = {
-    id: exists?.userId,
+    id: exists.userId,
   };
   await req.session.save(); // 세션 데이터를 암호화하고 쿠키를 설정
   console.log(exists);
