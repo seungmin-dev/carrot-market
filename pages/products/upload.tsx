@@ -2,12 +2,26 @@ import Button from "@components/button";
 import Input from "@components/input";
 import Layout from "@components/layout";
 import TextArea from "@components/textarea";
-import type { NextPage } from "next";
+import { useForm } from "react-hook-form";
+import useMutation from "@libs/client/useMutation";
+import { NextPage } from "next";
+
+interface UploadProductForm {
+  name: string;
+  price: number;
+  description: string;
+}
 
 const Upload: NextPage = () => {
+  const { register, handleSubmit } = useForm<UploadProductForm>();
+  const [uploadProduct, { loading, data }] = useMutation("/api/products");
+  const onValid = (data: UploadProductForm) => {
+    if (loading) return;
+    uploadProduct(data);
+  };
   return (
     <Layout canGoBack title="Upload Product">
-      <form className="space-y-4 p-4">
+      <form className="space-y-4 p-4" onSubmit={handleSubmit(onValid)}>
         <div>
           <label className="flex h-48 w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-gray-300 text-gray-600 hover:border-orange-500 hover:text-orange-500">
             <svg
@@ -28,49 +42,29 @@ const Upload: NextPage = () => {
           </label>
         </div>
         <Input
+          register={register("name", { required: true })}
           required
           label="Name"
           name="name"
           type="text"
-          register={{
-            onChange: function (event: {
-              target: any;
-              type?: any;
-            }): Promise<boolean | void> {
-              throw new Error("Function not implemented.");
-            },
-            onBlur: function (event: {
-              target: any;
-              type?: any;
-            }): Promise<boolean | void> {
-              throw new Error("Function not implemented.");
-            },
-            ref: function (instance: any): void {
-              throw new Error("Function not implemented.");
-            },
-            name: "",
-            min: undefined,
-            max: undefined,
-            maxLength: undefined,
-            minLength: undefined,
-            pattern: undefined,
-            required: undefined,
-            disabled: undefined,
-          }}
         />
         <Input
+          register={register("price", { required: true })}
           required
           label="Price"
-          placeholder="0.00"
           name="price"
           type="text"
           kind="price"
         />
-        <TextArea name="description" label="Description" />
-        <Button text="Upload item" />
+        <TextArea
+          register={register("description", { required: true })}
+          name="description"
+          label="Description"
+          required
+        />
+        <Button text={loading ? "Loading..." : "Upload item"} />
       </form>
     </Layout>
   );
 };
-
 export default Upload;
